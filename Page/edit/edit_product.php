@@ -32,5 +32,5 @@ $opts = array ('http' =>
 //Envoie de la requête
 $context = stream_context_create($opts);
 $res = file_get_contents($url, false, $context);
-header('Location:produit.php');
+header('Location:../produit.php');
 ?>

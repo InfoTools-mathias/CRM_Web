@@ -18,7 +18,7 @@
         <a href='client.php' class='btn_head underline'>CLIENT</a>
         <a href='rdv.php' class='btn_head underline'>RENDEZ-VOUS</a>
     </div>
-<a href="deconnexion.php"><div class="button_deco">
+<a href="./send/deconnexion.php"><div class="button_deco">
     <img class="img_deco" src="../Image/img_deco.svg" alt="">
 </div></a>
 </section>

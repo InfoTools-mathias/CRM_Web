@@ -42,7 +42,7 @@ if ($res !== FALSE) {
     $json = json_decode($res,true);
 
     $_SESSION['name'] = $json['name'];
-    header('Location:Accueil.php');
+    header('Location:../Accueil.php');
 } else {
     echo "<p style='color:red'>Identifiant ou mot de passe incorrect</p>";
 }?>

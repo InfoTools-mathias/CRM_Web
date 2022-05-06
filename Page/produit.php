@@ -9,17 +9,16 @@
 
 <!---------- Produit ---------->
 
-<button class="btn_add_product" name="AddProduct" onclick="openForm()">CRÉER UN PRODUIT</button>
+<button class="btn_ajout" name="AddProduct" onclick="openForm()">CRÉER UN PRODUIT</button>
 
-<div class="container_products">
+<div class="container_product_rdv">
     <?php function CallAPI() {
       $url = "http://localhost:5000/api/v1/products";
       $raw = file_get_contents($url);
       $json = json_decode($raw,true);
-      $page = 0;
         for ($i=0; $i < count($json); $i++) {?>
-        <div class="regroup_form_product">
-          <form class="form_product_edt" action="edit_product.php" method="POST">
+        <div class="regroup_form_product_rdv">
+          <form class="form_product_edit" action="./edit/edit_product.php" method="POST">
               <input class="input name" name="name" value="<?php echo $json[$i]['name'];?>"></input>
               <textarea class="textarea_des des" name="description"><?php echo $json[$i]['description'];?></textarea>
             <div>
@@ -29,12 +28,12 @@
               <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>"></input>
             </div>
             <div>
-              <button type="submit" name="edit_product" class="btn_product btn_edit">Modifier</button>
+              <button type="submit" name="edit_product" class="btn_classic btn_edit">Modifier</button>
             </div>
           </form>
-          <form class="form_product_dlt" action="delete_product.php" method="POST">
+          <form class="form_product_delete" action="./delete/delete_product.php" method="POST">
               <input class="input id" type="hidden" name="id" value="<?php echo $json[$i]['id'];?>"></input>
-              <button type="submit" name="delete_product" class="btn_product btn_dlt">Supprimer</button>
+              <button type="submit" name="delete_product" class="btn_classic btn_delete">Supprimer</button>
           </form>
         </div>
         <?php
@@ -43,15 +42,15 @@
     CallAPI()?>
 </div>
 <div class="form-popup" id="myForm">
-  <form action="envoie_Produit.php" method="POST" class="form-container">
+  <form action="./send/send_product.php" method="POST" class="form-container">
     <label><b>Nom :</b></label>
-    <input type="text" placeholder="Nom Produit" name="name_product" required>
+    <input name="name_product" type="text" placeholder="Nom Produit" required>
     <label><b>Description :</b></label>
-    <input type="text" placeholder="Description Produit" name="description_product" required>
+    <input name="description_product" type="text" placeholder="Description Produit" required>
     <label><b>Prix :</b></label>
-    <input type="text" placeholder="Prix Produit" name="price_product" required>
+    <input name="price_product" type="text" placeholder="Prix Produit" required>
     <label><b>Quantité :</b></label>
-    <input type="text" placeholder="Quantité Produit" name="quantity_product" required>
+    <input name="quantity_product" type="text" placeholder="Quantité Produit" required>
     <button type="submit" class="btn"> CRÉER</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Annuler</button>
   </form>
