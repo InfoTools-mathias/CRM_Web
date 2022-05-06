@@ -11,17 +11,21 @@
 /*-------- POP up FORMULAIRE AJOUT PRODUIT / RENDEZ-VOUS --------*/
 .open-button {background-color: #555;color: white;padding: 16px 20px;border: none;cursor: pointer;opacity: 0.8;position: fixed;
     bottom: 23px;right: 28px;width: 280px;}
-  .form-popup {display: none;position: fixed;left: 40%;right: auto;top: 20%;z-index: 9;}
-  .form-container {max-width: 300px;padding: 10px;background-color: #3D3D4D;border: solid 3px white;color: white;}
-  .form-container select {width: 100%;padding: 15px 15px 15px 10px;margin: 5px 0 22px 0;border: none;background: lightgrey;color: grey;}
-  .form-container input[type=text] {width: 100%;padding: 15px;margin: 5px 0 22px 0;border: none;background: lightgrey;}
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus, .form-container select:focus {
-      background-color: #ddd;outline: none;}
-  .form-container .btn {background-color: #04AA6D;color: white;padding: 16px 20px;border: none;cursor: pointer;width: 100%;
+.form-popup {display: none;position: fixed;left: 40%;right: auto;top: 20%;z-index: 9;}
+.form-container {max-width: 300px;padding: 10px;background-color: #3D3D4D;border: solid 3px white;color: white;}
+.form-container select {width: 100%;padding: 15px 15px 15px 10px;margin: 5px 0 22px 0;border: none;background: lightgrey;color: grey;}
+.form-container input[type=text], .date_rdv {width: 100%;padding: 15px;margin: 5px 0 22px 0;border: none;background: lightgrey;}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus, .form-container select:focus {
+    background-color: #ddd;outline: none;}
+.form-container .btn {background-color: #04AA6D;color: white;padding: 16px 20px;border: none;cursor: pointer;width: 100%;
     margin-bottom:10px;opacity: 0.8;}
-  .form-container .cancel {background-color: red;}
-  .form-container .btn:hover, .open-button:hover {opacity: 1;}
+.form-container .cancel {background-color: red;}
+.form-container .btn:hover, .open-button:hover {opacity: 1;}
 /*-------- POP up FIN FORMULAIRE AJOUT PRODUIT / RENDEZ-VOUS --------*/
+/*-------- POP up INFORMATION CLIENT --------*/
+.popup_client {display: none;position: fixed;width: 30%;height: 70%;top: 15%;left: 35%;border: solid 2px white;
+    border-radius: 2px;background-color: #3D3D4D;}
+/*-------- POP up FIN INFORMATION CLIENT --------*/
 /*-TOUS LES LIENS DE LA PAGE-*/
 a {text-decoration: none;color: white;}
 /*------------------------------------------------*/
@@ -95,25 +99,28 @@ td {padding: 8px 20px;border-bottom: solid 1px white;}
 /*-----------------------------------------*/
 .container-user {width: 40%;margin-top: 8%;margin-left: auto;margin-right: auto;border: solid 2px white;border-radius: 10px;}
 .user {color: white;display: flex;flex-direction: row;justify-content: center;gap: 50px;}
-.td_client {border-bottom: solid 1px white;}
-.btn_client {background-color: transparent;cursor: pointer;}
-.popup_client {display: none;position: fixed;width: 40%;height: 40%;top: 40%;left: 30%;border: solid 1px white;
-    border-radius: 15px;background-color: #3D3D4D;}
+.hidden_id {display: none;}
+.td_client {border-bottom: solid 1px white;text-align: center;}
+.td_img {border: none;}
+.btn_client {background-color: transparent;cursor: pointer;border-color: white;padding: 6px 25px;color: white;display: flex;}
+.btn_img_cross {border: none;background-color: transparent;position:absolute;right: 2%;top: 1%;cursor: pointer;padding: 0 0;}
+.container_img {border: solid 2px white;position: absolute;top: 5%;left: 5%;width: 20%;height: 20%;}
+.container_id {border: solid 1px white;position: absolute;top: 5%;right: 10%;width: 50%;height: 20%;}
+.container_facture {border: solid 2px white;position: absolute;left: 5%;top: 30%;width: 90%;height: 20%;}
 /*-----------------------------------------*/
 /*              Rendez-vous.php            */
 /*-----------------------------------------*/
-.form_rdv_edit {min-width: 100%;border-top: solid 2px white;border-left: solid 2px white;border-bottom: solid 2px white;
-    display: flex;align-items: center;background-color: #3D3D4D;}
+.form_rdv_edit {border-top: solid 2px white;border-left: solid 2px white;border-bottom: solid 2px white;
+    display: flex;align-items: center;background-color: #3D3D4D;justify-content: space-between;}
 .form_rdv_delete {border-top: solid 2px white;border-right: solid 2px white;border-bottom: solid 2px white;display: flex;
     align-items: center;background-color: #3D3D4D;}
-.form_left_rdv {}
-.date {min-width: 25%;color: white;font-size: 20px;border: none;background-color: transparent;margin: 0 5px 0 3%;}
-.adress {min-width: 40%;min-height: 80%;color: white;font-size: 15px;border: none;background-color: transparent;margin: 0 5px 0 0;}
+.form_left_rdv {display: flex;flex-direction: column;justify-content: center;height: 100%;width: 100%;gap: 15%;margin: 2%;}
+.date {color: white;font-size: 18px;background-color: transparent;border: none;text-align: center;}
+.users {color: white;font-size: 16px;background-color: transparent;border: none;text-align: center;}
+.form_center_rdv {display: flex;flex-direction: column;justify-content: center;height: 100%;width: 100%;margin: 2%;align-items: center;}
+.adress {font-size: 16px;width: 110%;height: 20%;color: white;border: none;background-color: transparent;margin: 5px 0;}
 .textarea_adress {resize: none;}
-.zip {width: 80px;color: white;font-size: 20px;background-color: transparent;margin: 0 0 5px 0;border: none;}
-.users {width: 50px;color: white;font-size: 20px;background-color: transparent;margin: 5px 0 0 0;border: none;text-align: center;}
-.btn_classic {font-size: 16px;border: solid 2px white;background-color: transparent;padding: 7px 10px;min-width: 120px;
-    cursor: pointer;color: white;}
+.zip {width: 60px;color: white;font-size: 18px;background-color: transparent;margin: 0 0 5px 0;border: none;}
 /*-----------------------------------------------*/
 /*                     IMAGE                     */
 /*-----------------------------------------------*/
@@ -123,4 +130,5 @@ td {padding: 8px 20px;border-bottom: solid 1px white;}
 .img_edit {width: 30px;height: auto;}
 .imgprod {width: 170px;height: 170px;}
 .imglogo {width: 25px;height: 25px;margin: 5px;}
-.imgclient {width: 12px;height: auto;}
+.imgclient {width: 12px;height: auto;margin: 0 10px 0 0;}
+.client_img_cross {width: 15px;}

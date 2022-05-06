@@ -26,10 +26,11 @@
         for ($i=0; $i < count($json); $i++) {
             if ($json[$i]['type'] == 2) {?>
                 <tr>
-                    <td style="text-align:center"><?php echo $json[$i]['name'];?></td>
-                    <td style="text-align:center"><?php echo $json[$i]['surname'];?></td>
-                    <td style="text-align:center"><?php echo $json[$i]['mail'];?></td>
-                    <td style="text-align:center;"><button name="btnclient" class="btn_client" onclick="gestionnaire_cli()"><img class="imgclient" src="../Image/img_flechebas.svg" alt=""></button></td>
+                    <td class="hidden_id"><?php echo $json[$i]['id'];?></td>
+                    <td class="td_client"><?php echo $json[$i]['name'];?></td>
+                    <td class="td_client"><?php echo $json[$i]['surname'];?></td>
+                    <td class="td_client"><?php echo $json[$i]['mail'];?></td>
+                    <td class="td_client td_img"><button class="btn_client" onclick="openForm()"><img class="imgclient" src="../Image/img_left_arrow.svg" alt="">FICHE CLIENT</button></td>
                 </tr>
         <?php }
         }?></table><?php
@@ -37,16 +38,44 @@
     CallAPI()
     ?>
 </div>
-
-<div class="popup_client">
-    <p>coucou</p>
+<!-- POP UP FICHE CLIENT -->
+<div class="popup_client" id="popup_client">
+    <button class="btn_img_cross" onclick="closeForm()"><img class="client_img_cross" src="../Image/img_cross.svg"></button>
+    <div class="container_img"><img class="img_user_client" src="../Image/img_user-regular.svg" alt=""></div>
+    <div class="container_id"><?php
+        function CallAPI_() {
+            $url = "http://localhost:5000/api/v1/users";
+            $raw = file_get_contents($url);
+            $json = json_decode($raw,true);
+            for ($i=0; $i < count($json); $i++) {
+                if ($json[$i]['type'] == 2) {
+                    echo $json[$i]['name'];
+                    echo $json[$i]['surname'];
+                    echo $json[$i]['mail'];?><br><br><?php
+                }
+            }
+        }
+        CallAPI_() ?>
+    </div>
+    <div class="container_facture"><?php
+        function CallAPI__() {
+            $url = "http://localhost:5000/api/v1/factures";
+            $raw = file_get_contents($url);
+            $json = json_decode($raw,true);
+            for ($i=0; $i < count($json); $i++) {
+                echo $json[$i]['date'];
+                echo $json[$i]['ligneFacture'];?><br><br><?php                
+            }
+        }
+        CallAPI__() ?>
+    </div>
 </div>
-
+<!-- FIN POP UP FICHE CLIENT -->
+<!-- SCRIPT POUR AFFICHER POPUP FICHE CLIENT -->
 <script>
-	function gestionnaire_cli() {
-    var div = document.getElementById("popup_client");
-    if (div.style.display === "none") {
-      div.style.display = "block";
-    } else {div.style.display = "none";}
-	}
+  //Bouton "Visualier un client"
+  function openForm() {document.getElementById("popup_client").style.display = "block";}
+  //Bouton ""
+  function closeForm() {document.getElementById("popup_client").style.display = "none";}
 </script>
+<!-- FIN SCRIPT POUR AFFICHER POPUP FICHE CLIENT -->

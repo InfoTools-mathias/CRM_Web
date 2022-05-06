@@ -9,8 +9,8 @@
 </head>
 <body>
     <div id="container">
-        <!-- zone de connexion -->      
-        <form class="form_connect" action="./send/verification.php" method="POST">
+        <!-- FORMULAIRE DE CONNEXION -->      
+        <form class="form_connect" action="./send/verification.php" method="POST"><!-- RENVOYER A verification.php -->
             <h1>Connexion</h1>            
             <label><b>Email</b></label>
             <input type="text" placeholder="Entrer votre email" name="iduser" required>
