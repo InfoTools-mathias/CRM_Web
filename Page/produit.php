@@ -62,9 +62,7 @@
     <label><b>Quantité :</b></label>
     <input name="quantity_product" type="text" placeholder="Quantité Produit" required>
     <button type="submit" class="btn"> CRÉER</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Annuler</button><!--Bouton pour annuler la création d'un rendez-vous
-                                                                                       Déclenche la fonction "closeForm"-->
-
+    <button type="button" class="btn cancel" onclick="closeForm()">Annuler</button><!--Bouton pour annuler la création d'un rendez-vous / Déclenche la fonction "closeForm"-->
   </form>
   <!-- FIN FORMULAIRE D'AJOUT D'UN PRODUIT -->
 </div>
