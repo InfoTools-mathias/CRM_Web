@@ -22,5 +22,5 @@ $opts = array('http' =>
 );
 $context = stream_context_create($opts);
 $res = file_get_contents($url, false, $context);
-header('Location:../rdv.php');
+//header('Location:../rdv.php');
 ?>

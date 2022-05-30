@@ -116,11 +116,12 @@ td {padding: 8px 20px;border-bottom: solid 1px white;}
     align-items: center;background-color: #3D3D4D;}
 .form_left_rdv {display: flex;flex-direction: column;justify-content: center;height: 100%;width: 100%;gap: 15%;margin: 2%;}
 .date {color: white;font-size: 18px;background-color: transparent;border: none;text-align: center;}
-.users {color: white;font-size: 16px;background-color: transparent;border: none;text-align: center;}
+.users {color: white;font-size: 16px;background-color: transparent;border: solid 2px white;text-align: center;}
 .form_center_rdv {display: flex;flex-direction: column;justify-content: center;height: 100%;width: 100%;margin: 2%;align-items: center;}
 .adress {font-size: 16px;width: 110%;height: 20%;color: white;border: none;background-color: transparent;margin: 5px 0;}
 .textarea_adress {resize: none;}
 .zip {width: 60px;color: white;font-size: 18px;background-color: transparent;margin: 0 0 5px 0;border: none;}
+.opt_users {background-color: #3D3D4D;}
 /*-----------------------------------------------*/
 /*                     IMAGE                     */
 /*-----------------------------------------------*/

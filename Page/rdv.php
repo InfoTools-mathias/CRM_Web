@@ -20,18 +20,29 @@
       $url = "http://localhost:5000/api/v1/meetings";
       $raw = file_get_contents($url);
       $json = json_decode($raw,true);
-        for ($i=0; $i < count($json); $i++) {?>
+      $url2 = "http://localhost:5000/api/v1/users";
+      $raw2 = file_get_contents($url2);
+      $json2 = json_decode($raw2,true);
+        for ($i=0; $i < count($json); $i++) {
+          $daterdv = new DateTime($json[$i]['date']); ?>
         <!-- Présentation des produits -->
         <div class="regroup_form_product_rdv">
           <!-- FORMULAIRE DE MODIFICATION D'UN RENDEZ-VOUS -->
           <form class="form_rdv_edit" action="./edit/edit_rdv.php" method="POST">
             <div class="form_left_rdv">
-                <input class="input date" name="name" value="<?php echo $json[$i]['date'];?>"></input>
-                <input class="input users" name="users" value="<?php
-                $users = $json[$i]['users'];
-                for ($u=0; $u < count($users); $u++) {
-                  echo $users[$u]['name'].' ';echo $users[$u]['surname'].' / ';
-                }?>"></input>
+              <input class="input date" name="date" value="<?php echo date_format($daterdv, 'd-m-Y H:i:s');?>"></input>
+              <select class="input select users" name="users">
+              <?php $users = $json[$i]['users'];//Affiche le commerciale affilié au rendez-vous
+              for ($u=0; $u < count($users); $u++) {?>
+                <option class="opt_users" name="users" value=""><?php echo $users[$u]['surname'].' ';echo $users[$u]['name'];?></option>
+        <?php }//Affiche les autres commerciaux
+                for ($b=0; $b < count($json2); $b++) {
+                  if ($json2[$b]['type'] == 1) {?>
+                      <option class="opt_users" value="<?php
+                      echo $json2[$b]['id'];?>"><?php echo $json2[$b]['surname'].' '; echo $json2[$b]['name'];?></option><?php
+                  }
+                }?>
+              </select>
             </div>
             <div class="form_center_rdv">
               <input class="input zip" name="zip" value="<?php echo $json[$i]['zip'];?>"></input>
@@ -45,7 +56,7 @@
           </form>
           <!-- FIN FORMULAIRE DE MODIFICATION D'UN RENDEZ-VOUS -->
           <!-- FORMULAIRE DE SUPPRESSION D'UN RENDEZ-VOUS -->
-          <form class="form_rdv_delete" action="delete_rdv.php" method="POST">
+          <form class="form_rdv_delete" action="./delete/delete_rdv.php" method="POST">
               <input type="hidden" class="input id" name="id" value="<?php echo $json[$i]['id'];?>"></input>
               <button type="submit" name="delete_rdv" class="btn_classic btn_delete">Supprimer</button>
           </form>
@@ -57,7 +68,7 @@
     //Appel de la fonction
     CallAPI()?>
 </div>
-<!-- POP UP FORMULAIRE D'AJOUT D'UN PRODUIT -->
+<!-- POP UP FORMULAIRE D'AJOUT D'UN RENDEZ-VOUS -->
 <div class="form-popup" id="myForm">
 <?php function CallAPI_() {
 $url = "http://localhost:5000/api/v1/users";
@@ -67,7 +78,7 @@ $json = json_decode($raw,true);?>
 <form action="./send/send_rdv.php" method="POST" class="form-container">
     <input name="token" type="hidden" value="<?php echo $_SESSION['token'];?>"></input>
     <label><b>Date :</b></label>
-    <input name="date_rdv" type="text" placeholder="Date Rendez-vous" required>
+    <input name="date_rdv" type="text" placeholder="YYYY-MM-DDTHH:MM:00.000Z" required>
     <label><b>Adresse :</b></label>
     <input name="adresse_rdv" type="text" placeholder="Adresse Rendez-vous" required>
     <label><b>Code Postal</b></label>
