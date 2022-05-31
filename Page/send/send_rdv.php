@@ -1,4 +1,5 @@
 <?php
+session_start();
 $data = array(
     'date' => $_POST["date_rdv"],
     'adress' => $_POST["adresse_rdv"],

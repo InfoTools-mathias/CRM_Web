@@ -6,9 +6,11 @@
     <link rel="icon" href="../Image/Logo-InfoTools.png">
 </head>
 <?php session_start() ?>
+<?php
 
+
+?>
 <!---------- Header ---------->
-
 <section class='header'>
     <div class="image_utilisateur">
         <img class="img_user" src="../Image/img_user.svg" alt="">

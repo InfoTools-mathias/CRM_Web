@@ -1,4 +1,5 @@
 <?php
+session_start();
 $data = array(
     'name' => $_POST["name_product"],
     'description' => $_POST["description_product"],

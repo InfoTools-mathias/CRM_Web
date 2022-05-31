@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Recupération des données
 $id = $_POST["id"];
 $token = $_POST["token"];

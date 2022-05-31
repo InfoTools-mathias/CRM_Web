@@ -1,7 +1,6 @@
 <!-------------------------------------->
 <!--------------- Accueil -------------->
 <!-------------------------------------->
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +15,9 @@
 function CallAPI() {
     $url = "http://localhost:5000/api/v1/meetings";// URL de l'API
     $raw = file_get_contents($url);
-    $json = json_decode($raw,true);?>
+    $json = json_decode($raw,true);
+    //Token de la session
+    //echo $_SESSION['token'];?>
     <!-- Présentation des rendez-vous -->
     <table class="container_rendez-vous">
     <tr>
@@ -43,7 +44,7 @@ function CallAPI() {
                 <td class="td_CP"><?php echo $json[$i]['zip'];?></td>
                 <td class="td_Adr"><?php echo $json[$i]['adress'];?></td>
                 <td class="td_Rec"><?php
-                //Commerciaux correspondant au rendez-vous
+                //Commerciaux correspondants au rendez-vous
                 $users = $json[$i]['users'];
                 for ($u=0; $u < count($users); $u++) {
                     echo $users[$u]['name'].' ';
@@ -52,6 +53,5 @@ function CallAPI() {
             </tr><?php
     }?>
 </table><?php
-}
-//Appel de la fonction
+}//Appel de la fonction
 CallAPI()?>
