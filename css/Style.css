@@ -1,6 +1,6 @@
-.btn_ajout {position: absolute;left: 15%;top: 15%;border: solid 2px white;background-color: transparent;color: white;
+.btn_ajout {position: absolute;left: 15%;top: 12%;border: solid 2px white;background-color: transparent;color: white;
     padding: 15px 20px;cursor: pointer;}
-.container_product_rdv {display: flex;flex-direction: column;align-items: center;margin-top: 8%;gap: 10px;}
+.container_product_rdv {display: flex;flex-direction: column;align-items: center;margin-top: 5%;gap: 10px;}
 .regroup_form_product_rdv {display: flex;min-height: 130px;}
 .lbl_euro {color: white;font-size: 20px;}
 /*-------- BOUTON MODIF / SUPPRESSION PRODUIT / RENDEZ-VOUS ---------*/
@@ -23,7 +23,7 @@
 .form-container .btn:hover, .open-button:hover {opacity: 1;}
 /*-------- POP up FIN FORMULAIRE AJOUT PRODUIT / RENDEZ-VOUS --------*/
 /*-------- POP up INFORMATION CLIENT --------*/
-.popup_client {display: none;position: fixed;width: 30%;height: 70%;top: 15%;left: 35%;border: solid 2px white;
+.popup_client {display: block;position: fixed;width: 30%;height: 70%;top: 15%;left: 35%;border: solid 2px white;
     border-radius: 2px;background-color: #3D3D4D;}
 /*-------- POP up FIN INFORMATION CLIENT --------*/
 /*-TOUS LES LIENS DE LA PAGE-*/
@@ -94,19 +94,29 @@ td {padding: 8px 20px;border-bottom: solid 1px white;}
 .textarea_des {resize: none;}
 .price {width: 80px;color: white;font-size: 20px;background-color: transparent;margin: 0 0 5px 0;border: none;}
 .qte {width: 50px;color: white;font-size: 20px;background-color: transparent;margin: 5px 0 0 0;border: none;text-align: center;}
+.red {color: red;}
 /*-----------------------------------------*/
 /*               Client.php                */
 /*-----------------------------------------*/
-.container-user {width: 40%;margin-top: 8%;margin-left: auto;margin-right: auto;border: solid 2px white;border-radius: 10px;}
-.user {color: white;display: flex;flex-direction: row;justify-content: center;gap: 50px;}
+.container-user {width: 60%;margin-top: 3%;margin-left: auto;margin-right: auto;border: solid 2px white;border-radius: 10px;}
+.form_client_list {display: flex;flex-direction: row;align-items: center;justify-content: center;}
+.user {color: white;display: flex;flex-direction: row;justify-content: center;}
 .hidden_id {display: none;}
-.td_client {border-bottom: solid 1px white;text-align: center;}
-.td_img {border: none;}
-.btn_client {background-color: transparent;cursor: pointer;border-color: white;padding: 6px 25px;color: white;display: flex;}
+.input_client {text-align: center;width: 60%!important;background-color: transparent;color: white;border: none;height: 10%!important;}
+.clt_name {max-width: 250px;margin: 0 5px 0 5px!important;font-size: 16px;}
+.clt_surname {max-width: 250px;margin: 0 5px 0 5px!important;font-size: 16px;}
+.clt_mail {max-width: 300px;margin: 0 5px 0 5px!important;font-size: 16px;}
+.btn_client {background-color: transparent;cursor: pointer;border-color: white;padding: 2px 15px;color: white;margin-left: 5%;width: 170px;height: 40px;}
 .btn_img_cross {border: none;background-color: transparent;position:absolute;right: 2%;top: 1%;cursor: pointer;padding: 0 0;}
-.container_img {border: solid 2px white;position: absolute;top: 5%;left: 5%;width: 20%;height: 20%;}
-.container_id {border: solid 1px white;position: absolute;top: 5%;right: 10%;width: 50%;height: 20%;}
-.container_facture {border: solid 2px white;position: absolute;left: 5%;top: 30%;width: 90%;height: 20%;}
+.container_img {border: solid 2px white;position: absolute;top: 5%;left: 5%;width: 20%;height: 130px;}
+.container_id {border: solid 2px white;position: absolute;top: 5%;right: 5%;width: 50%;height: 130px;padding: 0 0 0 15px;color: white;}
+.container_facture {border: solid 2px white;position: absolute;left: 5%;top: 30%;width: 90%;height: 50%;}
+.ligne_fact {border: solid 1px white;height: 10%;display: flex;flex-direction: row;}
+.fact_date {border-right: solid 1px white;height: 70%;width: 40%;padding: 8px 0 0 10px;}
+.date_fact {color: white;margin-top: 0;}
+.fact_produit {border-right: solid 1px white;padding: 8px 0 0 15px;width: 35%;}
+.prod_fact {color: white;margin-top: 0;}
+.fact_prix {padding: 8px 0 0 20px;}
 /*-----------------------------------------*/
 /*              Rendez-vous.php            */
 /*-----------------------------------------*/
@@ -131,5 +141,6 @@ td {padding: 8px 20px;border-bottom: solid 1px white;}
 .img_edit {width: 30px;height: auto;}
 .imgprod {width: 170px;height: 170px;}
 .imglogo {width: 25px;height: 25px;margin: 5px;}
-.imgclient {width: 12px;height: auto;margin: 0 10px 0 0;}
+.imgclient {height: 13px;width: auto;margin: 0 10px 0 0;}
 .client_img_cross {width: 15px;}
+.img_user_client {width: 100%;height: 98%;}

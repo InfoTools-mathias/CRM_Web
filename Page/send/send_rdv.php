@@ -4,7 +4,7 @@ $data = array(
     'date' => $_POST["date_rdv"],
     'adress' => $_POST["adresse_rdv"],
     'zip' => $_POST["cp_rdv"],
-    'users' => $_POST["com_rdv"],
+    //'users' => $_POST["com_rdv"],
 );
 var_dump($data);
 
@@ -23,5 +23,5 @@ $opts = array('http' =>
 );
 $context = stream_context_create($opts);
 $res = file_get_contents($url, false, $context);
-//header('Location:../rdv.php');
+header('Location:../rdv.php');
 ?>

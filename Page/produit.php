@@ -26,7 +26,11 @@
               <textarea class="textarea_des des" name="description"><?php echo $json[$i]['description'];?></textarea>
             <div>
               <input class="input price" name="price" value="<?php echo $json[$i]['price'];?>"></input><label class="lbl_euro" for="">€</label>
-              <input class="input qte" name="qte" value="<?php echo $json[$i]['quantity'];?>"></input>
+              <?php if ($json[$i]['quantity'] >= 10) {?>
+                <input class="input qte" name="qte" value="<?php echo $json[$i]['quantity'];?>"></input><?php
+              } else {?>
+                <input class="input qte red" name="qte" value="<?php echo $json[$i]['quantity'];?>"></input><?php
+              }?>              
               <input type="hidden" name="id" value="<?php echo $json[$i]['id'];?>"></input>
               <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>"></input>
             </div>

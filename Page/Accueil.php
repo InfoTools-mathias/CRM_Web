@@ -14,7 +14,14 @@
 //FONCTION DE L'APPEL DE L'API
 function CallAPI() {
     $url = "http://localhost:5000/api/v1/meetings";// URL de l'API
-    $raw = file_get_contents($url);
+    $opts = array('http' =>
+        array(
+            'method' => 'GET',
+            'header' => 'Authorization: Bearer '.$_SESSION['token'],
+        )
+      );
+    $context = stream_context_create($opts);
+    $raw = file_get_contents($url, false, $context);
     $json = json_decode($raw,true);
     //Token de la session
     //echo $_SESSION['token'];?>
@@ -24,34 +31,29 @@ function CallAPI() {
         <th class="th_Date">Date</th>
         <th class="th_CP">Code postal</th>
         <th class="th_Adr">Adresse</th>
-        <th class="th_Rec">Reception</th>
+        <!--<th class="th_Rec">Reception</th>-->
     </tr><?php
     $now = date('Y-m-d h:i:s');//Initialise la date/heure du jour
+    //Rendez-vous qui ne sont pas passé
     for ($i=0; $i < count($json); $i++) {
         $date = new DateTime($json[$i]['date']);
-        ?>
+        if (date_format($date, 'Y-m-d h:i:s') > $now) {?>
             <tr>
-                <td class="td_date"><?php   
-                    //Affichage de la date que si elle n'est pas dépassé
-                    //Sinon on écrit "DATE DEPASSE"             
-                    if (date_format($date, 'Y-m-d h:i:s') > $now) {
-                        echo date_format($date, 'd-m-Y H:i:s');
-                    }
-                    else {
-                        echo "<p style='color: red;'>Date dépassé</p>";
-                    }?>
-                </td>
+                <td class="td_date"><?php echo date_format($date, 'd-m-Y H:i:s');?></td>
                 <td class="td_CP"><?php echo $json[$i]['zip'];?></td>
                 <td class="td_Adr"><?php echo $json[$i]['adress'];?></td>
-                <td class="td_Rec"><?php
-                //Commerciaux correspondants au rendez-vous
-                $users = $json[$i]['users'];
-                for ($u=0; $u < count($users); $u++) {
-                    echo $users[$u]['name'].' ';
-                    echo $users[$u]['surname'];
-                } ?></td>
             </tr><?php
-    }?>
-</table><?php
+        }                
+    }//Rendez-vous qui sont passé - apparait en rouge
+    for ($i=0; $i < count($json); $i++) {
+        $date = new DateTime($json[$i]['date']);
+        if (date_format($date, 'Y-m-d h:i:s') < $now) {?>
+            <tr>
+                <td class="td_date"><?php echo "<p style='color: red;'>".date_format($date, 'd-m-Y H:i:s')."</p>";?></td>
+                <td class="td_CP"><?php echo "<p style='color: red;'>".$json[$i]['zip']."</p>";?></td>
+                <td class="td_Adr"><?php echo "<p style='color: red;'>".$json[$i]['adress']."</p>";?></td>
+            </tr><?php
+        }                
+    }
 }//Appel de la fonction
 CallAPI()?>

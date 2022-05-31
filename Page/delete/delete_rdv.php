@@ -1,7 +1,7 @@
 <?php
+session_start();
 //Recupération des données
 $id = $_POST["id"];
-$token = $_POST["token"];
 
 //URL de l'API
 $url = "http://localhost:5000/api/v1/meetings/".$id;
@@ -9,7 +9,7 @@ $url = "http://localhost:5000/api/v1/meetings/".$id;
 $opts = array('http' =>
     array(
         'method' => 'DELETE',
-        'header' => 'Authorization: Bearer '.$token,
+        'header' => 'Authorization: Bearer '.$_SESSION['token'],
     )
 );
 

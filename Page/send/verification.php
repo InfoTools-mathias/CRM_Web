@@ -35,8 +35,9 @@ if ($res !== FALSE) {
     $context = stream_context_create($opts);
     $res = file_get_contents($url, false, $context);
     $json = json_decode($res,true);
-    //Récuperation du nom
+    //Récuperation de données
     $_SESSION['name'] = $json['name'];
+    $_SESSION['id'] = $json['id'];
     header('Location:../Accueil.php');//Redirection a l'Accueil
 } else {
     echo "<p style='color:red'>Identifiant ou mot de passe incorrect</p>";
